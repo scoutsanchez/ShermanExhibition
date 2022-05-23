@@ -64,7 +64,7 @@ def populate_img_arr(images_paths, size=(100, 100), should_preprocess=False):
 @click.command()
 @click.option('--data', help='Data folder,has to end with /')
 @click.option('--name', default="Visualisation", help='Name of visualisation')
-@click.option('--sprite_size', default=500, help='Size of sprite')
+@click.option('--sprite_size', default=1000, help='Size of sprite')
 @click.option('--tensor_name', default="tensor.bytes", help='Name of Tensor file')
 @click.option('--sprite_name', default="sprites.png", help='Name of sprites file')
 @click.option('--model_input_size', default=299, help='Size of inputs to model')
