@@ -77,15 +77,15 @@ def main(data, name, sprite_size, tensor_name, sprite_name, model_input_size):
     images_paths.extend(glob.glob(data + "*.JPG"))
     images_paths.extend(glob.glob(data + "*.png"))
 
-    # model = InceptionV3(include_top=False, pooling='avg')
+    model = InceptionV3(include_top=False, pooling='avg')
 
     img_arr = populate_img_arr(images_paths, size=(model_input_size, model_input_size), should_preprocess=True)
-    # model_output_shape = model.output_shape[1]
-    model_output_shape = 3
+    model_output_shape = model.output_shape[1]
+    # model_output_shape = 3
 
     # breakpoint()
-    preds = np.random.randn(img_arr.shape[0], model_output_shape)
-    # preds = model.predict(img_arr, batch_size=64)
+    # preds = np.random.randn(img_arr.shape[0], model_output_shape)
+    preds = model.predict(img_arr, batch_size=64)
     preds.tofile("./oss_data/" + tensor_name)
 
     raw_imgs = populate_img_arr(images_paths, size=(sprite_size, sprite_size), should_preprocess=False)
