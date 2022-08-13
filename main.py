@@ -83,9 +83,10 @@ def main(data, name, sprite_size, tensor_name, sprite_name, model_input_size):
     model_output_shape = model.output_shape[1]
     # model_output_shape = 32
 
-    # breakpoint()
     # preds = np.random.randn(img_arr.shape[0], model_output_shape)
     preds = model.predict(img_arr, batch_size=64)
+    # breakpoint()
+    
     preds.tofile("./oss_data/" + tensor_name)
 
     raw_imgs = populate_img_arr(images_paths, size=(sprite_size, sprite_size), should_preprocess=False)
