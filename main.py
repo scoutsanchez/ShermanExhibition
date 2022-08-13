@@ -77,10 +77,15 @@ def main(data, name, sprite_size, tensor_name, sprite_name, model_input_size):
     images_paths.extend(glob.glob(data + "*.JPG"))
     images_paths.extend(glob.glob(data + "*.png"))
 
-    model = InceptionV3(include_top=False, pooling='avg')
+    # model = InceptionV3(include_top=False, pooling='avg')
 
     img_arr = populate_img_arr(images_paths, size=(model_input_size, model_input_size), should_preprocess=True)
-    preds = model.predict(img_arr, batch_size=64)
+    # model_output_shape = model.output_shape[1]
+    model_output_shape = 32
+
+    # breakpoint()
+    preds = np.random.randn(img_arr.shape[0], model_output_shape)
+    # preds = model.predict(img_arr, batch_size=64)
     preds.tofile("./oss_data/" + tensor_name)
 
     raw_imgs = populate_img_arr(images_paths, size=(sprite_size, sprite_size), should_preprocess=False)
@@ -88,7 +93,7 @@ def main(data, name, sprite_size, tensor_name, sprite_name, model_input_size):
     sprite.save('./oss_data/' + sprite_name)
 
     oss_json = json.load(open('./oss_data/oss_demo_projector_config.json'))
-    tensor_shape = [raw_imgs.shape[0], model.output_shape[1]]
+    tensor_shape = [raw_imgs.shape[0], model_output_shape]
     single_image_dim = [raw_imgs.shape[1], raw_imgs.shape[2]]
 
     json_to_append = {"tensorName": name,
