@@ -81,7 +81,7 @@ def main(data, name, sprite_size, tensor_name, sprite_name, model_input_size):
 
     img_arr = populate_img_arr(images_paths, size=(model_input_size, model_input_size), should_preprocess=True)
     # model_output_shape = model.output_shape[1]
-    model_output_shape = 32
+    model_output_shape = 3
 
     # breakpoint()
     preds = np.random.randn(img_arr.shape[0], model_output_shape)
