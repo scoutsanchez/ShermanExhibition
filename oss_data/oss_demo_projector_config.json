@@ -194,6 +194,21 @@
                     500
                 ]
             }
+        },
+        {
+            "tensorName": "Visualisation",
+            "tensorShape": [
+                50,
+                2048
+            ],
+            "tensorPath": "./oss_data/tensor.bytes",
+            "sprite": {
+                "imagePath": "./oss_data/sprites.png",
+                "singleImageDim": [
+                    500,
+                    500
+                ]
+            }
         }
     ],
     "modelCheckpointPath": "Demo datasets"
